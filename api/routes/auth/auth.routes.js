@@ -31,7 +31,13 @@ const Users = require('../../../data/models/users.model');
  * @apiParam {String} password The New Users password
  *
  * @apiSuccess {Object} user The Newly Created User
- *
+ * @apiSuccessExample {json} Success-Response:
+ * {
+ *   "id": 2,
+ *   "username": "testuser",
+ *   "created_at": "2019-10-19 19:58:08",
+ *   "updated_at": "2019-10-19 19:58:08"
+ * }
  * @apiErrorExample {json} Username-Already-Taken
  * {
  *      "message": "Username is already taken"
@@ -73,6 +79,17 @@ function register(req, res) {
  * @apiParam {String} username Username of the User
  * @apiParam {String} password Password of the User
  * @apiSuccess {Object} The Users welcome message, token, and user object
+ * @apiSuccessExample {json} Success-Response:
+ * {
+ *   "message": "Welcome back test",
+ *   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNTcxNTE0NzcwLCJleHAiOjE1NzE2MDExNzB9.4iEFSx0i7V8cvYgZ0ALRAQG1aUTqqguQ5xDG86sgpjg",
+ *   "user": {
+ *      "id": 1,
+ *      "username": "test",
+ *      "created_at": "2019-10-19 18:21:31",
+ *      "updated_at": "2019-10-19 18:21:31"
+ *   }
+ * }
  * @apiErrorExample {json} Username-Not-Found-Response
  * {
  *      "message": "Username is not in the system."
