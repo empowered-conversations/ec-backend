@@ -20,7 +20,7 @@ const Users = require('../../../data/models/users.model');
  */
 
 /**
- * @api {post} /auth/register Registers a New User
+ * @api {post} /register Registers a New User
  * @apiUse UserNameAlreadyTaken
  * @apiVersion 1.0.0
  * @apiName RegisterUser
@@ -62,7 +62,7 @@ function register(req, res) {
 }
 
 /**
- * @api {post} /auth/login Logs an User In
+ * @api {post} /login Logs an User In
  * @apiUse UserNotFound
  * @apiUse NotAuthorized
  * @apiVersion 1.0.0
