@@ -100,3 +100,7 @@ public
 # TernJS port file
 .tern-port
 data/empowered.db3
+
+# Documentation
+apidoc/
+apidoc.json
