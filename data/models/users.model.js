@@ -5,16 +5,19 @@ function findAll() {
 }
 
 function findBy(filter) {
-  return db('users').where(filter);
+  return db('users')
+    .where(filter)
+    .returning('*');
 }
 
-async function add(user) {
-  const [id] = await db('users').insert(user);
-  return findBy({ id });
+function add(user) {
+  return db('users')
+    .insert(user)
+    .returning('*');
 }
 
-async function update(id, user) {
-  await db('users')
+function update(id, user) {
+  db('users')
     .where({ id })
     .update(user);
   return findBy({ id });
