@@ -2,9 +2,16 @@
 
 module.exports = {
   development: {
-    client: 'sqlite3',
+    client: 'pg',
     connection: {
-      filename: './data/empowered.db3',
+      host: process.env.MYDBHOST,
+      database: process.env.MYDBNAME,
+      user: process.env.MYDBPERSON,
+      password: process.env.MYDBPASSWORD,
+    },
+    pool: {
+      min: 2,
+      max: 10,
     },
     useNullAsDefault: true,
     migrations: {
