@@ -14,7 +14,7 @@ Backend Project for Lambda&#39;s Build Week, October 21-25, 2019
 
 <p>Logs an User In</p>
 
-	POST /auth/login
+	POST /api/auth/login
 
 
 ### Parameters
@@ -60,7 +60,7 @@ Incorrect-Password
 
 <p>Registers a New User</p>
 
-	POST /auth/register
+	POST /api/auth/register
 
 
 ### Parameters
