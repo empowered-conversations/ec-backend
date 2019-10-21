@@ -101,6 +101,3 @@ public
 .tern-port
 data/empowered.db3
 
-# Documentation
-apidoc/
-apidoc.json
