@@ -1,18 +1,18 @@
 const db = require('../dbConfig');
 
-function findAll() {
+function findAll () {
 	return db('texts');
 }
 
-function findBy(filter) {
-	return db('texts').where(filter).returning('*');
+function findBy ( id) {
+	return db('texts').select("texts.friend's name", "texts.friend's number").where({ "texts.id" : id }).returning();
 }
 
-function add(text) {
+function add (text) {
 	return db('texts').insert(text).returning('*');
 }
 
-function update(id, text) {
+function update (id, text) {
 	db('texts').where({ id }).update(text);
 	return findBy({ id });
 }

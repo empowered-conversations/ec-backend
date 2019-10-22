@@ -64,7 +64,7 @@ function register(req, res) {
         res.status(400).json({ message: 'Username is already taken' });
       }
     })
-    .catch(err => res.status(500).json(err));
+    .catch(err => res.status(500).json('register',err));
 }
 
 /**
@@ -124,7 +124,7 @@ function login(req, res) {
         res.status(404).json({ message: 'Username is not in the system.' });
       }
     })
-    .catch(err => res.status(500).json(err));
+    .catch(err => res.status(500).json('Login',err));
 }
 
 authRouter.post('/register', register).post('/login', login);
