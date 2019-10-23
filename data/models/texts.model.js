@@ -5,7 +5,7 @@ function findAll () {
 }
 
 function findBy ( id) {
-	return db('texts').select("texts.friend's name", "texts.friend's number").where({ "texts.id" : id }).returning();
+	return db('texts').select("texts.friendsName", "texts.friendsNumber").where({ "texts.id" : id }).returning();
 }
 
 function add (text) {
