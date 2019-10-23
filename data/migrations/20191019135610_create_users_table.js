@@ -13,9 +13,9 @@ exports.up = function(knex) {
   .createTable('texts', tbl => {
     tbl.increments();
     tbl.string("friendsName", 40).notNullable();
-    tbl.integer("friendsNumber", 11).notNullable()
+    tbl.integer("friendsNumber").notNullable()
     tbl.string("yourName", 40).notNullable()
-    tbl.integer("yourNumber", 11).notNullable()
+    tbl.integer("yourNumber").notNullable()
   })
 
 };
