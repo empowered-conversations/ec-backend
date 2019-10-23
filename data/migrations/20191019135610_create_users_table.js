@@ -12,10 +12,10 @@ exports.up = function(knex) {
   })
   .createTable('texts', tbl => {
     tbl.increments();
-    tbl.string("friend's name", 40).notNullable();
-    tbl.integer("friend's number", 11).notNullable()
-    tbl.string("your name", 40).notNullable()
-    tbl.integer("your number", 11).notNullable()
+    tbl.string("friendsName", 40).notNullable();
+    tbl.integer("friendsNumber", 11).notNullable()
+    tbl.string("yourName", 40).notNullable()
+    tbl.integer("yourNumber", 11).notNullable()
   })
 
 };
