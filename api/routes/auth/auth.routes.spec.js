@@ -25,6 +25,13 @@ describe('auth.routes.js', () => {
         })
     })
     describe('Login Route', () => {
+        it('returns 404 on unknown User', async () => {
+            const expectedStatus = 404;
+            const response = await request(server)
+              .post('/api/auth/login')
+              .send({ username: 'NotHere', password: 'Test' });
+            expect(response.status).toBe(expectedStatus);
+          });
         it('returns 4-1 on incorrect password', async () => {
             const expectedStatus = 401
             const response = await request(server)
