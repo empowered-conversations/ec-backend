@@ -4,8 +4,11 @@ function findAll () {
 	return db('texts');
 }
 
-function findBy ( id) {
-	return db('texts').select("texts.friendsName", "texts.friendsNumber").where({ "texts.id" : id }).returning();
+function findBy (id) {
+	return db('texts')
+		.select('texts.friendsName', 'texts.friendsNumber')
+		.where({ 'texts.id': id })
+		.returning('texts.friendsName', 'texts.friendsNumber');
 }
 
 function add (text) {
