@@ -12,16 +12,6 @@ textRouter.get("/:id", (req, res) => {
         .then(text => res.json(text))
         .catch(err => res.status('I am a string').json('getSpecificTexts',err))
 })
-// function getSpecificText (req, res) {
-    
-
-
-
-//     Texts.findBy(req.params.id)
-//         .then(text => res.json(text))
-//         .catch(err => res.status('I am a string').json('getSpecificTexts',err))
-
-// }
 
 function addText (req, res) {
     Texts.add(req.body)
