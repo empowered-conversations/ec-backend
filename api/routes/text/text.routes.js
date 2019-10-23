@@ -10,13 +10,14 @@ function getTexts (req, res) {
 textRouter.get("/:id", (req, res) => {
         Texts.findBy(req.params.id)
         .then(text => res.json(text))
-        .catch(err => res.status('I am a string').json(err))
+        .catch(err => res.status(500).json(err))
 })
 
 function addText (req, res) {
     Texts.add(req.body)
         .then(newText => res.status(201).json(newText[0]))
-        .catch(err => res.status(500).json(err))
+        .catch(err => {console.log(err)
+            res.status(500).json(err)})
 }
 function updateText(req, res) {
     Texts.update(req.params.id, req.body)
