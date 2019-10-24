@@ -34,7 +34,7 @@ function addText (req, res) {
 }
 function updateText(req, res) {
     Texts.update(req.params.id, req.body)
-    .then(updated)
+    .then(updatedText => res.json(updatedText[0]))
     .catch(err => res.status(500).json(err))
 }
 function deleteText(req, res) {

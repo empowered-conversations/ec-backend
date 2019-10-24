@@ -17,7 +17,7 @@ function add (text) {
 
 function update (id, text) {
 	db('texts').where({ id }).update(text);
-	return findBy({ id });
+	return findBy('*');
 }
 
 function remove (id) {
