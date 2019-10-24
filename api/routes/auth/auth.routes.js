@@ -44,27 +44,28 @@ const Users = require('../../../data/models/users.model');
  * }
  */
 
-function register(req, res) {
-  Users.findBy({ username: req.body.username })
-    .then(foundUser => {
-      if (foundUser.length === 0) {
-        const newPassword = generatePassword(req.body.password);
-        Users.add({ username: req.body.username, password: newPassword })
-          .then(saved => {
-            const newUser = {
-              id: saved[0].id,
-              username: saved[0].username,
-              created_at: saved[0].created_at,
-              updated_at: saved[0].updated_at,
-            };
-            res.status(201).json(newUser);
-          })
-          .catch(err => res.status(500).json(err));
-      } else {
-        res.status(400).json({ message: 'Username is already taken' });
-      }
-    })
-    .catch(err => res.status(500).json('register',err));
+function register (req, res) {
+	Users.findBy({ username: req.body.username })
+		.then(foundUser => {
+			if (foundUser.length === 0) {
+				const newPassword = generatePassword(req.body.password);
+				Users.add({ username: req.body.username, password: newPassword })
+					.then(saved => {
+						const newUser = {
+							id         : saved[0].id,
+							username   : saved[0].username,
+							created_at : saved[0].created_at,
+							updated_at : saved[0].updated_at,
+						};
+						res.status(201).json(newUser);
+					})
+					.catch(err => res.status(500).json(err));
+			}
+			else {
+				res.status(400).json({ message: 'Username is already taken' });
+			}
+		})
+		.catch(err => res.status(500).json('register', err));
 }
 
 /**
@@ -100,31 +101,33 @@ function register(req, res) {
  * }
  */
 
-function login(req, res) {
-  Users.findBy({ username: req.body.username })
-    .then(user => {
-      if (user) {
-        if (bcrypt.compareSync(req.body.password, user[0].password)) {
-          const token = generateToken(user[0]);
-          const sentUser = {
-            id: user[0].id,
-            username: user[0].username,
-            created_at: user[0].created_at,
-            updated_at: user[0].updated_at,
-          };
-          res.json({
-            message: `Welcome back ${sentUser.username}`,
-            token,
-            user: sentUser,
-          });
-        } else {
-          res.status(401).json({ message: 'Incorrect Password' });
-        }
-      } else {
-        res.status(404).json({ message: 'Username is not in the system.' });
-      }
-    })
-    .catch(err => res.status(500).json('Login',err));
+function login (req, res) {
+	Users.findBy({ username: req.body.username })
+		.then(user => {
+			if (user) {
+				if (bcrypt.compareSync(req.body.password, user[0].password)) {
+					const token = generateToken(user[0]);
+					const sentUser = {
+						id         : user[0].id,
+						username   : user[0].username,
+						created_at : user[0].created_at,
+						updated_at : user[0].updated_at,
+					};
+					res.json({
+						message : `Welcome back ${sentUser.username}`,
+						token,
+						user    : sentUser,
+					});
+				}
+				else {
+					res.status(401).json({ message: 'Incorrect Password' });
+				}
+			}
+			else {
+				res.status(404).json({ message: 'Username is not in the system.' });
+			}
+		})
+		.catch(err => res.status(500).json('Login', err));
 }
 
 authRouter.post('/register', register).post('/login', login);
