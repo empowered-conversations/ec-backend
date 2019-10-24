@@ -9,7 +9,7 @@ describe('text.model.js', () => {
                 yourName : "Justin Trombley",
                 yourNumber : "5623622452"
             })
-            expect(result[0].friendsName).toEqual('Don')
+            expect(result[0].friendsName).toBe('Don')
         })
     })
     describe('findBy', () => {
