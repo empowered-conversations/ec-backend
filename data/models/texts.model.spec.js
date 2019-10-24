@@ -28,7 +28,7 @@ describe('text.model.js', () => {
     })
     describe('find', () => {
         it('should find 3 texts', async () => {
-            const results = await Texts.find()
+            const results = await Texts.findAll()
             expect(results.length).toEqual(3)
         })
        

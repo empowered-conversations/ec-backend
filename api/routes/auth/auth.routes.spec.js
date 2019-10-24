@@ -1,4 +1,3 @@
-jest.setTimeout(30000)
 const request = require('supertest')
 const server = require('../../server')
 
